@@ -10,7 +10,7 @@ on:
 
 jobs:
   suggest:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-suggestion.yaml@v14.24 # Import the sdk generation workflow which will handle the generation of the SDKs and publishing to the package managers in 'direct' mode.
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-suggestion.yaml@v14.25 # Import the sdk generation workflow which will handle the generation of the SDKs and publishing to the package managers in 'direct' mode.
     with:
       speakeasy_version: latest
       openapi_docs: |
