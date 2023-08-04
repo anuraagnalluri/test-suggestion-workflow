@@ -21,16 +21,10 @@ paths:
         description: How many items to return at one time (max 100)
         required: false
         schema:
-          type: object
-          required:
-          - code
-          - message
-          properties:
-            code:
-              type: integer
-              format: int32
-            message:
-              type: string
+          $ref: '#/components/schemas/CodeMessage'
+        example:
+          code: 10
+          message: Return 10 items
       responses:
         "200":
           description: A paged array of pets
@@ -43,21 +37,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Pets'
+              examples:
+                pets:
+                - id: 1
+                  name: Fido
+                  tag: dog
+                - id: 2
+                  name: Whiskers
+                  tag: cat
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                type: object
-                required:
-                - code
-                - message
-                properties:
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
+                $ref: '#/components/schemas/CodeMessage'
+              examples:
+                error:
+                  code: 500
+                  message: Internal Server Error
     post:
       summary: Create a pet
       operationId: createPets
@@ -88,7 +85,7 @@ paths:
       tags:
       - pets
       parameters:
-      - name: petIds
+      - name: petId
         in: path
         required: true
         description: The id of the pet to retrieve
@@ -137,7 +134,7 @@ components:
       maxItems: 100
       items:
         $ref: '#/components/schemas/Pet'
-    Error:
+    CodeMessage:
       type: object
       required:
       - code
