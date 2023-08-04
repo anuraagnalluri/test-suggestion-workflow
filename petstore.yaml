@@ -88,7 +88,7 @@ paths:
       tags:
       - pets
       parameters:
-      - name: petIds
+      - name: petId
         in: path
         required: true
         description: The id of the pet to retrieve
